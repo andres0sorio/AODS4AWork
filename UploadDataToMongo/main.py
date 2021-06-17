@@ -11,12 +11,12 @@ if __name__ == '__main__':
 
     context = AccidentData()
     context.client = 1001
-    context.client_name = "AINSER SAS"
+    context.client_name = "DS4A SAS"
     context.client_contact = "JUAN PEREZ"
     context.client_phone = "57123123123"
-    context.data_origin = "VIA Neiva Girardot"
+    context.data_origin = "VIA X a Z"
 
-    input_file = 'data/Siniestros autovia.csv'
+    input_file = 'data/all_records.csv'
 
     upload_data()
 
