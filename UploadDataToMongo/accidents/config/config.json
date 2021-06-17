@@ -1,0 +1,6 @@
+{
+  "DEV": {
+    "DBURL": "localhost",
+    "DBPORT": 27017
+  }
+}
