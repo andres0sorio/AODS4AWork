@@ -1,0 +1,62 @@
+[
+  {
+    "table": "Product",
+    "file": "data/csvs/product.csv",
+    "columns": 25
+  },
+  {
+    "table": "ProductReview",
+    "file": "data/csvs/productreview.csv",
+    "columns": 8
+  },
+  {
+    "table": "ProductModelProductDescriptionCulture",
+    "file": "data/csvs/productmodelproductdescriptionculture.csv",
+    "columns": 4
+  },
+  {
+    "table": "ProductDescription",
+    "file": "data/csvs/productdescription.csv",
+    "columns": 4
+  },
+  {
+    "table": "ProductCategory",
+    "file": "data/csvs/productcategory.csv",
+    "columns": 4
+  },
+  {
+    "table": "ProductSubCategory",
+    "file": "data/csvs/productsubcategory.csv",
+    "columns": 5
+  },
+  {
+    "table": "SalesPerson",
+    "file": "data/csvs/salesperson.csv",
+    "columns": 9
+  },
+  {
+    "table": "SalesOrderHeader",
+    "file": "data/csvs/salesorderheader.csv",
+    "columns": 25
+  },
+  {
+    "table": "SalesOrderDetail",
+    "file": "data/csvs/salesorderdetail.csv",
+    "columns": 10
+  },
+  {
+    "table": "SalesTerritory",
+    "file": "data/csvs/salesterritory.csv",
+    "columns": 10
+  },
+  {
+    "table": "CountryRegionCurrency",
+    "file": "data/csvs/countryregioncurrency.csv",
+    "columns": 3
+  },
+  {
+    "table": "CurrencyRate",
+    "file": "data/csvs/currencyrate.csv",
+    "columns": 7
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "table": "Product",
+    "file": "data/csvs/product.csv",
+    "columns": 25
+  }
+]
