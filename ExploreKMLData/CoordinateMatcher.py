@@ -66,7 +66,8 @@ class CoordinateMatcher:
 
                     latitude, longitude = self.match(pos_x)
                     print(pos_x, latitude, longitude)
-                    self.results.append([pos_x*1000, latitude, longitude])
+                    abs_KM1000 = int(pos_x*1000)
+                    self.results.append([abs_KM1000, latitude, longitude])
 
         except IOError as error:
             logging.info(error)

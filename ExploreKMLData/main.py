@@ -4,6 +4,12 @@ from CoordinateMatcher import CoordinateMatcher
 
 
 def parseXML(input_file):
+    """
+    This function parses a clean XML file and runs the analysis for producing an equivalence table
+       between KM on road and coordinate
+    :param input_file: clean XML file
+    :return: nothing
+    """
 
     tree = ET.parse(input_file)
     root = tree.getroot()
@@ -35,9 +41,10 @@ def parseXML(input_file):
 
     total_distance = 0.0
 
-    p_juncal = coordinates_data[0]
-    p_flandes = coordinates_data[-1]
-    print(p_juncal, p_flandes)
+    p_starting_point = coordinates_data[0]
+    p_end_point = coordinates_data[-1]
+
+    print(p_starting_point, p_end_point)
 
     for idx in range(1, max_points):
 
@@ -55,29 +62,25 @@ def parseXML(input_file):
 
     print(total_distance)
 
-    # exportToCSV(coordinates_data, 'data/extracted_coordinates.csv')
-
     exportToCSV(equivalence_data, 'data/equivalence_table.csv', ['latitude', 'longitude', 'cumulative', 'd'])
 
 
 if __name__ == '__main__':
 
-    file_01 = 'data/Juncal-Flandes_IGAC.xml'
-    file_02 = 'data/Puntos_c100m_viaJuncal_Flandes.kml'
-    file_03 = "data/output.xml"
+    step = 2
 
-    #parseXML(file_03)
-    # Google maps latitud y luego longitud
-    # 2.8873968596085753, -75.3443901848703
-    # 2.8726516219645015, -75.34078516405859
-    d = distance(2.8873968596085753,2.8726516219645015, -75.3443901848703, -75.34078516405859)
-    print("*", d)  # Resultado OK
+    # Step 1. Generate the equivalence table based on KML points
+    # Step 2. MATCH coordinate to ABS KM
 
-    # MATCH coordinate to ABS KM
+    if step == 1:
+        file_01 = "data/Puntos_c50m_viaJuncal_Flandes_CLEAN.xml"
+        parseXML(file_01)
 
-    matcher = CoordinateMatcher('data/equivalence_table.csv')
+    elif step == 2:
 
-    matcher.match_input('data/Siniestros autovia_KMS_Original.csv')
+        matcher = CoordinateMatcher('data/equivalence_table.csv')
+        matcher.match_input('data/Siniestros autovia_KMS_Original.csv')
+        matcher.export()
 
-    matcher.export()
-
+    else:
+        print("No more options available")

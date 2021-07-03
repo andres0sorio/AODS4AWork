@@ -41,8 +41,9 @@ def exportToCSV(data, file_name, fields):
     output_file = open(file_name, 'w', newline='')
 
     with output_file:
-        write = csv.writer(output_file)
-        write.writerows(data)
+        writer = csv.writer(output_file)
+        writer.writerow(fields)
+        writer.writerows(data)
 
 
 def extractCoordinatesFromKML(input_file):
@@ -69,4 +70,3 @@ def extractCoordinatesFromKML(input_file):
     print("NLINES: " + str(n_lines))
 
 
-# def exportLookUpTable(input_file, output_file):
