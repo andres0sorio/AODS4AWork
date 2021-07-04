@@ -29,24 +29,39 @@ def distance(lat1, lat2, lon1, lon2):
     a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
     c = 2 * asin(sqrt(a))
 
-    # Radius of earth in kilometers.
-    r = 6371
+    # Radius of earth in kilometers:
+    # "The radius of Earth at the equator is 3,963 miles (6,378 kilometers), according to NASA's
+    # Goddard Space Flight Center in Greenbelt, Maryland."
+    r = 6378.00
 
     # calculate the result
-    return c*r
+    distance_ab = c*r
+    return distance_ab
 
 
 def exportToCSV(data, file_name, fields):
+    """
+
+    :param data:
+    :param file_name:
+    :param fields:
+    :return:
+    """
 
     output_file = open(file_name, 'w', newline='')
 
     with output_file:
-        writer = csv.writer(output_file)
+        writer = csv.writer(output_file, delimiter=';')
         writer.writerow(fields)
         writer.writerows(data)
 
 
 def extractCoordinatesFromKML(input_file):
+    """
+
+    :param input_file:
+    :return:
+    """
 
     f_out = open('data/output.xml', 'w')
 

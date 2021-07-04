@@ -32,7 +32,8 @@ class CoordinateMatcher:
 
         try:
             with open(self.input_file, 'r', encoding='utf-8') as f:
-                reader = csv.reader(f, delimiter=',')
+                reader = csv.reader(f, delimiter=';')
+                next(reader)
                 for row in reader:
                     latitude = float(row[0])
                     longitude = float(row[1])
@@ -58,7 +59,7 @@ class CoordinateMatcher:
         """
         try:
             with open(input_file, 'r', encoding='utf-8') as f:
-                reader = csv.reader(f, delimiter=',')
+                reader = csv.reader(f, delimiter=';')
                 next(reader, None)
 
                 for row in reader:

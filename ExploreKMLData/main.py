@@ -6,7 +6,7 @@ from CoordinateMatcher import CoordinateMatcher
 def parseXML(input_file):
     """
     This function parses a clean XML file and runs the analysis for producing an equivalence table
-       between KM on road and coordinate
+       between KM on road coordinates (latitude, longitude)
     :param input_file: clean XML file
     :return: nothing
     """
@@ -33,7 +33,7 @@ def parseXML(input_file):
         latitude = float(coordinates[1])
         elevation = float(coordinates[2])
 
-        print(latitude, ",", longitude)
+        # ... print(latitude, ",", longitude)
 
         coordinates_data.append([latitude, longitude, elevation])
 
@@ -55,7 +55,7 @@ def parseXML(input_file):
 
         d = distance(lat1, lat2, lon1, lon2)
 
-        if d > 0.050:
+        if d > 0.010:
             total_distance += d
             print(lat1, lon1, total_distance, d)
             equivalence_data.append([lat1, lon1, total_distance, d])
@@ -69,18 +69,29 @@ if __name__ == '__main__':
 
     step = 2
 
+    # Step 0. Clean KML file from all unnecessary data
     # Step 1. Generate the equivalence table based on KML points
     # Step 2. MATCH coordinate to ABS KM
 
     if step == 1:
-        file_01 = "data/Puntos_c50m_viaJuncal_Flandes_CLEAN.xml"
+        file_01 = "data/Puntos_c10m_viaJuncal_Flandes_CLEAN.xml"
         parseXML(file_01)
 
     elif step == 2:
 
         matcher = CoordinateMatcher('data/equivalence_table.csv')
-        matcher.match_input('data/Siniestros autovia_KMS_Original.csv')
+
+        # TODO: clean this section
+        #  matcher.match_input('data/Siniestros autovia_KMS_Original.csv')
+        #  matcher.match_input('data/highest_accidents_by_km.csv')
+
+        matcher.match_input('data/Compilado DS4A_Coordenadas.csv')
+
         matcher.export()
+
+    elif step == 0:
+
+        extractCoordinatesFromKML('data/Puntos_c10m_viaJuncal_Flandes.kml')
 
     else:
         print("No more options available")
