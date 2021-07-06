@@ -1,0 +1,82 @@
+[
+  {
+    "name": "JUNCAL – TRIANGULO",
+    "fu_abs": 1,
+    "fu_real": 1,
+    "functional_unit" : "UF1",
+    "km0+000": 0,
+    "coordinates": "2.790978472235736,-75.30944285033691,0"
+  },
+  {
+    "name": "NEIVA – AIPE",
+    "fu_abs": 2,
+    "fu_real": 2,
+    "functional_unit" : "UF2",
+    "km0+000": 20650,
+    "coordinates": "2.952290413428647,-75.31114212699842,0"
+  },
+  {
+    "name": "AIPE – SALDAÑA",
+    "fu_abs": 3,
+    "fu_real": 3,
+    "functional_unit" : "UF3",
+    "km0+000": 20650,
+    "coordinates": "2.952290413428647,-75.31114212699842,0"
+  },
+  {
+    "name": "SALDAÑA – INICIO VARIANTE GUAMO",
+    "fu_abs": 4,
+    "fu_real": 4,
+    "functional_unit" : "UF4",
+    "km0+000": 21800,
+    "coordinates": "4.154718885195823,-74.915496917319,0"
+  },
+  {
+    "name": "FIN VAR.GUAMO INICIO VAR. ESPINAL",
+    "fu_abs": 4,
+    "fu_real": 4,
+    "functional_unit" : "UF4",
+    "km0+000": 21800,
+    "coordinates": "4.154718885195823,-74.915496917319,0"
+  },
+  {
+    "name": "GLORIETA TEXPINAL – GIRARDOT",
+    "fu_abs": 5,
+    "fu_real": 5,
+    "functional_unit" : "UF5",
+    "km0+000": 25100,
+    "coordinates": "2.991466672367263,-75.30518725166748,0"
+  },
+  {
+    "name": "PAR VIAL",
+    "fu_abs": 5,
+    "fu_real": 5,
+    "functional_unit" : "UF5",
+    "km0+000": 25100,
+    "coordinates": "2.991466672367263,-75.30518725166748,0"
+  },
+  {
+    "name": "PUENTE SANTANDER – TRIANGULO",
+    "fu_abs": 6,
+    "fu_real": 2,
+    "functional_unit" : "UF1",
+    "km0+000": 20650,
+    "coordinates": "2.9489517337945976,-75.30782900166643,0"
+  },
+  {
+    "name": "VARIANTE GUAMO",
+    "fu_abs": 7,
+    "fu_real": 4,
+    "functional_unit" : "UF4",
+    "km0+000": 151304,
+    "coordinates": "4.154718885195823,-74.915496917319,0"
+  },
+  {
+    "name": "VARIANTE ESPINAL",
+    "fu_abs": 8,
+    "fu_real": 4,
+    "functional_unit" : "UF4",
+    "km0+000": 169030,
+    "coordinates": "4.017608348065895,-74.96086791478092,0"
+  }
+]
