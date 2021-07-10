@@ -2,6 +2,10 @@ from bs4 import BeautifulSoup
 import urllib
 import urllib.request
 import csv
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+DRIVER_PATH = 'D:\\Temp\\chromedriver_win32\\chromedriver.exe'
 
 
 class SimitConsult:
@@ -31,6 +35,24 @@ class SimitConsult:
                     f_out.write(site_content)
 
                 self.results.append(outfile)
+
+    def scrape3(self, input_file):
+        """
+        web Scraping with selenium+chromedriver
+        unfortunately the SIMIT webpage has scraping blocking using captchas - which makes more difficult the task
+          and not worth the effort (at least for this exercise)
+        :param input_file: file with licence plates
+        :return: html files to process with BS4
+        """
+
+        options = Options()
+        options.headless = True
+        options.add_argument("--window-size=1920,1200")
+
+        driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+        driver.get("https://www.fcm.org.co/simit/#/estado-cuenta?numDocPlacaProp=HQY866")
+        print(driver.page_source)
+        driver.quit()
 
     def process(self):
 
