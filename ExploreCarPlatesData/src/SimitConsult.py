@@ -8,8 +8,6 @@ from selenium.webdriver.chrome.options import Options
 DRIVER_PATH = 'D:\\Temp\\chromedriver_win32\\chromedriver.exe'
 
 import dryscrape
-import time
-
 
 
 class SimitConsult:
@@ -58,7 +56,6 @@ class SimitConsult:
         print(driver.page_source)
         driver.quit()
 
-
     def scrape2(self, input_file):
 
         dryscrape.start_xvfb()
@@ -84,7 +81,6 @@ class SimitConsult:
                     f_out.write(response)
                 
                 self.results.append(outfile)
-                
 
     def scrape4(self, input_file):
 
@@ -100,8 +96,7 @@ class SimitConsult:
                 site_url = self.simit_url + plate
                 print(site_url)
                 driver.get(site_url)
-                
-        
+
     def process(self):
 
         for file_name in self.results:
