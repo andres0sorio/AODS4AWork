@@ -20,31 +20,43 @@ class MyTestCase(unittest.TestCase):
         :return:
         """
 
-        km_point_1 = 4.9  # Confamiliar Playa Juncal: 2.8234083232893283, -75.32808114390144
-        km_point_2 = 12.5  # Point 2: 2.887096, -75.344258
-        km_point_3 = 15.3  # Point 3: Zona Franca: 2.9067294835127058, -75.32901151046433
-        km_point_4 = 52.1  # Point 4: Fast Food J&Y 3.2163799682308594, -75.25017608666538
-        km_point_5 = 127.0  # Point 5: Parador Maria Jose 3.8193086227629403, -75.06331824461414
-        km_point_6 = 171.0 # Punto 6: Monumento a la Tambora: 4.148768410412617, -74.89571437286209
+        validation_points = [{"point": "km_point_1",
+                               "km": 4.9,
+                               "latitude": 2.8234083232893283,
+                               "longitude": -75.32808114390144},
+                             {"point": "km_point_2",
+                               "km": 12.5,
+                               "latitude": 2.887096,
+                               "longitude": -75.344258},
+                             {"point": "km_point_3",
+                               "km": 15.3,
+                               "latitude": 2.9067294835127058,
+                               "longitude": -75.32901151046433},
+                             {"point": "km_point_4",
+                               "km": 52.1,
+                               "latitude": 3.2163799682308594,
+                               "longitude": -75.25017608666538},
+                             {"point": "km_point_5",
+                               "km": 127.0,
+                               "latitude": 3.8193086227629403,
+                               "longitude": -75.06331824461414},
+                             {"point": "km_point_6",
+                              "km": 151.0,
+                              "latitude": 4.010429856247179,
+                              "longitude": -74.97652818616747},
+                             {"point": "km_point_7",
+                              "km": 158.0,
+                              "latitude": 4.0483533198430655,
+                              "longitude": -74.95720260352158}
+                             ]
 
         matcher = CoordinateMatcher('data/equivalence_table.csv')
-        latitude, longitude = matcher.match(km_point_1)
-        print(latitude, ",", longitude)
 
-        latitude, longitude = matcher.match(km_point_2)
-        print(latitude, ",", longitude)
+        for point in validation_points:
 
-        latitude, longitude = matcher.match(km_point_3)
-        print(latitude, ",", longitude)
-
-        latitude, longitude = matcher.match(km_point_4)
-        print(latitude, ",", longitude)
-
-        latitude, longitude = matcher.match(km_point_5)
-        print(latitude, ",", longitude)
-
-        latitude, longitude = matcher.match(km_point_6)
-        print(latitude, ",", longitude)
+            latitude, longitude = matcher.match(point["km"])
+            aprox_error = distance(latitude, point["latitude"], longitude, point["longitude"])
+            print(point["km"], latitude, ",", longitude, aprox_error)
 
 
 if __name__ == '__main__':

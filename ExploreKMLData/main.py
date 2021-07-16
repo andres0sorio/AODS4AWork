@@ -52,17 +52,18 @@ def parseXML(input_file):
         lat2 = coordinates_data[idx][0]
         lon1 = coordinates_data[idx-1][1]
         lon2 = coordinates_data[idx][1]
+        ele1 = coordinates_data[idx-1][2]
 
         d = distance(lat1, lat2, lon1, lon2)
 
-        if d > 0.010:
+        if 0.010 < d < 0.015:
             total_distance += d
-            print(lat1, lon1, total_distance, d)
-            equivalence_data.append([lat1, lon1, total_distance, d])
+            print(lat1, lon1, ele1, total_distance, d)
+            equivalence_data.append([lat1, lon1, ele1, total_distance, d])
 
     print(total_distance)
 
-    exportToCSV(equivalence_data, 'data/equivalence_table.csv', ['latitude', 'longitude', 'cumulative', 'd'])
+    exportToCSV(equivalence_data, 'data/equivalence_table.csv', ['latitude', 'longitude', 'elevation', 'cumulative', 'd'])
 
 
 if __name__ == '__main__':
@@ -74,24 +75,25 @@ if __name__ == '__main__':
     # Step 2. MATCH coordinate to ABS KM
 
     if step == 1:
-        file_01 = "data/Puntos_c10m_viaJuncal_Flandes_CLEAN.xml"
+        file_01 = "data/Puntos_c10m_viaJuncal_Flandes_CondatosZ_V3_CLEAN.xml"
         parseXML(file_01)
 
     elif step == 2:
 
         matcher = CoordinateMatcher('data/equivalence_table.csv')
 
-        # TODO: clean this section
+        # TODO: clean this section: this must be done in a more systematic way
         #  matcher.match_input('data/Siniestros autovia_KMS_Original.csv')
         #  matcher.match_input('data/highest_accidents_by_km.csv')
 
-        matcher.match_input('data/Compilado DS4A_Coordenadas.csv')
+        # matcher.match_input('data/Informe_Unificado_VARADOS_Rev1_ABSISAS.csv')
+        matcher.match_input('data/Compilado DS4A_Rev3_Absisas.csv')
 
         matcher.export()
 
     elif step == 0:
 
-        extractCoordinatesFromKML('data/Puntos_c10m_viaJuncal_Flandes.kml')
+        extractCoordinatesFromKML('data/Puntos_c10m_viaJuncal_Flandes_CondatosZ_V3.kml')
 
     else:
         print("No more options available")

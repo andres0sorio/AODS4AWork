@@ -63,7 +63,7 @@ def extractCoordinatesFromKML(input_file):
     :return:
     """
 
-    f_out = open('data/output.xml', 'w')
+    f_out = open('output/output.xml', 'w')
 
     f_out.write("<?xml version=\"1.0\"?>\n")
     f_out.write("<MultiGeometry>\n")
