@@ -28,6 +28,7 @@ class CoordinateMatcher:
         table = {}
         latitudes = []
         longitudes = []
+        elevations = []
         deltas = []
 
         try:
@@ -37,13 +38,16 @@ class CoordinateMatcher:
                 for row in reader:
                     latitude = float(row[0])
                     longitude = float(row[1])
-                    delta_x = float(row[2])
+                    elevation = float(row[2])
+                    delta_x = float(row[3])
                     latitudes.append(latitude)
                     longitudes.append(longitude)
+                    elevations.append(elevation)
                     deltas.append(delta_x)
 
             table["latitudes"] = latitudes
             table["longitudes"] = longitudes
+            table["alturas"] = elevations
             table["deltas"] = deltas
 
             return table
@@ -65,10 +69,10 @@ class CoordinateMatcher:
                 for row in reader:
                     pos_x = float(row[2])
 
-                    latitude, longitude = self.match(pos_x)
+                    latitude, longitude, elevation = self.match(pos_x)
                     print(pos_x, latitude, longitude)
                     abs_KM1000 = int(pos_x*1000)
-                    self.results.append([abs_KM1000, latitude, longitude])
+                    self.results.append([abs_KM1000, latitude, longitude, elevation])
 
         except IOError as error:
             logging.info(error)
@@ -77,11 +81,11 @@ class CoordinateMatcher:
 
         for key, value in json_input.items():
             logging.info(str(key) + '->' + str(value))
-            latitude, longitude = self.match(value)
-            logging.info(str(value) + " " + str(latitude) + " " + str(longitude))
+            latitude, longitude, elevation = self.match(value)
+            logging.info(str(value) + " " + str(latitude) + " " + str(longitude) + " " + str(elevation))
             abs_KM1000 = int(value*1000)
 
-            self.results.append([abs_KM1000, latitude, longitude])
+            self.results.append([abs_KM1000, latitude, longitude, elevation])
 
     def match(self, x):
         """
@@ -92,13 +96,15 @@ class CoordinateMatcher:
 
         idx = (np.abs(self.deltas - x)).argmin()
         latitude = self.table["latitudes"][idx]
-        longitudes = self.table["longitudes"][idx]
+        longitude = self.table["longitudes"][idx]
+        elevation = self.table["alturas"][idx]
 
-        return latitude, longitudes
+        return latitude, longitude, elevation
 
     def export(self):
         """
 
         :return:
         """
-        exportToCSV(self.results, 'data/export_coordinates.csv', ["ABS KM*1000", "Latitudes", "Longitudes"])
+        exportToCSV(self.results, 'data/export_coordinates.csv', ["ABS KM*1000", "Latitudes", "Longitudes", "Altura"])
+
