@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     # 1 - Clean the input file list
 
-    step = 3
+    step = 2
 
     if step == 1:
         data = get_file_names("input_files_paths.txt")

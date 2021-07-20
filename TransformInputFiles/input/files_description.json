@@ -1,0 +1,18 @@
+[
+    {
+        "data": "Indicents",
+        "sheet": "ANG-FOP-18",
+        "columns": [
+            ""
+        ],
+        "id": "Id incidente"
+    },
+    {
+        "data": "Accidents",
+        "sheet": "ANG-FOP-19",
+        "columns": [
+            ""
+        ],
+        "id": "Id accidente"
+    }
+]

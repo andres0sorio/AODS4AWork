@@ -14,6 +14,15 @@ class ExcelReader:
         """
         self.sheet = sheet
 
+        f = open("input/files_description.json", "r")
+        files_description = json.loads(f.read())
+
+        for description in files_description:
+            if description["sheet"] == sheet:
+                self.columns = description["columns"]
+                self.data = description["data"]
+                self.id = description["id"]
+
     def look_for_sheet(self, input_file):
 
         wb = load_workbook(input_file)
@@ -29,16 +38,22 @@ class ExcelReader:
         f = open(file_list, "r")
         data = json.loads(f.read())
 
-        for dt in data:
-            if dt[self.sheet] == 1:
-                file = dt["file_path"] + dt["file_name"]
-                print(file)
-                df = df.append(pd.read_excel(file, sheet_name=self.sheet), ignore_index=True)
+        try:
+            for dt in data:
+                if dt[self.sheet] == 1:
+                    file = dt["file_path"] + dt["file_name"]
+                    print(file)
+                    df = df.append(pd.read_excel(file, sheet_name=self.sheet), ignore_index=True)
 
-        print(len(df))
-        df = df.drop_duplicates(subset=['Id incidente'])
-        df = df.sort_values(by='Id incidente')
-        print(len(df))
+            print(len(df))
+            df = df.drop_duplicates(subset=[self.id])
+            df = df.sort_values(by=self.id)
+            print(len(df))
 
-        df.to_csv("output/output.csv", sep=';', encoding='utf-8-sig', index=False)
+            print(df.info())
+
+            df.to_csv("output/output.csv", sep=';', encoding='utf-8-sig', index=False)
+
+        except Exception as error:
+            print(error)
 
