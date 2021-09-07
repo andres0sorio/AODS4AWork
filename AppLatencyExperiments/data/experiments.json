@@ -1,0 +1,16 @@
+[
+    {
+        "name": "view_one",
+        "endpoint": "visualizer?table_name=view_one",
+        "ntimes": 1000,
+        "auth": "no_auth",
+        "run": false
+    },
+    {
+        "name": "apig_view_one",
+        "endpoint": "visualizer?table_name=view_one",
+        "ntimes": 1000,
+        "auth": "with_auth",
+        "run": true
+    }
+]
