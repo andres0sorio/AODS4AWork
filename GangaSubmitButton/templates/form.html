@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Job configuration
+{% endblock %}
+
+{% block content %}
+
+<div class="content">
+
+<form action="" method="post">
+    <label for="name">Date (YYYY-MM-DD)</label>
+    <input type="text" id="date" name="date" /><br>
+    <label for="email">Time (H:M:S)</label>
+    <input type="text" id="time" name="time" /><br>
+    <input type="submit" class="btn btn-success" id="send-submit" name="submit" value="Submit" />
+</form>
+
+</div>
+
+{% endblock %}

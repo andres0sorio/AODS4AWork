@@ -1,0 +1,15 @@
+# Ganga script - Ver 1.0
+# Author: Andres Osorio
+# Running R scipt - DS4A 
+
+j = Job()
+j.application = Executable()
+j.application.exe = File("script.sh")
+j.application.args = [##1##, ##2##]
+j.inputfiles=[LocalFile('modeloaccidentesv0609.R')]
+j.inputfiles.append(LocalFile('input_data.zip'))
+j.outputfiles = [ LocalFile('model_output.tif', localDir=''), LocalFile('modeloaccidentesv0609.R.out', localDir='')]
+
+j.backend.force_parallel = True
+
+j.submit()
