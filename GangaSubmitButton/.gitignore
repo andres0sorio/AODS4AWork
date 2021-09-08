@@ -157,4 +157,5 @@ pip-selfcheck.json
 
 # python scripts
 ganga/*.py
+ganga/*.zip
 
