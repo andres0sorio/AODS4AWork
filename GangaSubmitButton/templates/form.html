@@ -8,13 +8,22 @@ Job configuration
 
 <div class="content">
 
-<form action="" method="post">
-    <label for="name">Date (YYYY-MM-DD)</label>
-    <input type="text" id="date" name="date" /><br>
-    <label for="email">Time (H:M:S)</label>
-    <input type="text" id="time" name="time" /><br>
-    <input type="submit" class="btn btn-success" id="send-submit" name="submit" value="Submit" />
-</form>
+    <h2>Job submitter</h2>
+
+    <h4>Spatial-temporal point process model</h4>
+
+    <form action="" method="post">
+        <label for="name">Date (YYYY-MM-DD)</label>
+        <input type="text" id="date" name="date" /><br>
+        <label for="email">Time (H:M:S)</label>
+        <input type="text" id="time" name="time" /><br>
+        <input type="submit" class="btn btn-success" id="send-submit" name="submit" value="Submit" />
+    </form>
+
+    {% if service_message %}
+    <p> {{ service_message }} </p>
+    {% endif %}
+
 
 </div>
 

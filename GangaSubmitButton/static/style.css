@@ -5,8 +5,8 @@ h1 {
   height: 20%;
   padding-left: 5px;
 }
-h2, h3 {
-  color: #3e4444;
+h2, h3, h4 {
+  color: whitesmoke;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
@@ -54,7 +54,7 @@ body, input[text], button {
     color: #FFFFFF;
     background-color: #5175FF;
     width:960px;
-    height: 95%;
+    height: 300px;
     margin: 20px auto;
     margin-top:120px;
     padding: 10px;
@@ -82,7 +82,7 @@ body, input[text], button {
 }
 .h2, h2 {
     font-size: 30px;
-    color: #82b74b;
+    color: whitesmoke;
 }
 .btn-block {
     display: block;
