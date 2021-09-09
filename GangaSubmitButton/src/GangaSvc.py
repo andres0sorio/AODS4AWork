@@ -36,9 +36,13 @@ class GangaSvc(Resource):
             arguments = {"date": dt, "time": tt}
 
             gc = GangaConnector()
-            gc.run(arguments)
+            exit_code = gc.run(arguments)
+            if exit_code == 1:
+                response = {'service_message': 'Job successfully submitted.'}
+            else:
+                response = {'service_message': 'There was a problem. Please check logs.'}
 
-            return make_response({'data': 'GangaSvc> Ready for your command'}, 200)
+            return render_template("form.html", **response)
 
         except Exception as error:
             print(error)
