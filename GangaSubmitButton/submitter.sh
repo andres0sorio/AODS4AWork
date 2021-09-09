@@ -9,6 +9,6 @@ cd $SCRIPT_PATH
 
 zip -r input_data.zip datosproyecto/ spde-book-functions.R
 
-echo ganga $SCRIPT
+ganga $SCRIPT
 
 exit 1
