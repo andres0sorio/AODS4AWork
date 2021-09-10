@@ -45,7 +45,7 @@ class GangaConnector:
         """
         self.write_script(arguments)
 
-        # exit_code = subprocess.call('./submitter.sh')
+        exit_code = subprocess.call('./submitter.sh')
         exit_code = 1
         print(exit_code)
 
